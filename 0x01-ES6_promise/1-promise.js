@@ -11,7 +11,7 @@ export default function getFullResponseFromAPI(success) {
       // If 'success' is true, simulate a successful API response.
       resolve({ status: 200, body: "Success" });
     } else {
-      // If 'success' is false, simulate a failed API response with an error.
+      // If 'success' is false, simulate a failed API response with an error
       reject(new Error("The fake API is not working currently"));
     }
   });
