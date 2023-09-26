@@ -1,3 +1,4 @@
+// 1-main.js
 import getFullResponseFromAPI from "./1-promise";
 
 getFullResponseFromAPI(true)
