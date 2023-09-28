@@ -1,4 +1,6 @@
-import Currency from "./3-currency.js";
+/* eslint no-underscore-dangle: ["error", {"allow": ["_name", "_code", "_amount", "_currency"] }] */
+/* eslint-disable-next-line */
+import Currency from './3-currency';
 
 export default class Pricing {
   constructor(amount, currency) {
@@ -10,39 +12,23 @@ export default class Pricing {
     return this._amount;
   }
 
-  set amount(newAmount) {
-    if (typeof newAmount === "number") {
-      this._amount = newAmount;
-    } else {
-      throw new Error("Invalid data type. Amount must be a number.");
-    }
+  set amount(cash) {
+    this._amount = cash;
   }
 
   get currency() {
     return this._currency;
   }
 
-  set currency(newCurrency) {
-    if (newCurrency instanceof Currency) {
-      this._currency = newCurrency;
-    } else {
-      throw new Error(
-        "Invalid data type. Currency must be an instance of Currency class."
-      );
-    }
+  set currency(cur) {
+    this._currency = cur;
   }
 
   displayFullPrice() {
-    return `${this._amount} ${this._currency.name} (${this._currency.code})`;
+    return `${this.amount} ${this.currency.displayFullCurrency()}`;
   }
 
   static convertPrice(amount, conversionRate) {
-    if (typeof amount === "number" && typeof conversionRate === "number") {
-      return amount * conversionRate;
-    } else {
-      throw new Error(
-        "Invalid data type. Amount and conversionRate must be numbers."
-      );
-    }
+    return amount * conversionRate;
   }
 }

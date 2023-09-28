@@ -1,3 +1,4 @@
+/* eslint no-underscore-dangle: ["error", {"allow": ["_name", "_code"] }] */
 export default class Currency {
   constructor(code, name) {
     this._code = code;
@@ -8,24 +9,16 @@ export default class Currency {
     return this._code;
   }
 
-  set code(newCode) {
-    if (typeof newCode === "string") {
-      this._code = newCode;
-    } else {
-      throw new Error("Invalid data type. Code must be a string.");
-    }
+  set code(sym) {
+    this._code = sym;
   }
 
   get name() {
     return this._name;
   }
 
-  set name(newName) {
-    if (typeof newName === "string") {
-      this._name = newName;
-    } else {
-      throw new Error("Invalid data type. Name must be a string.");
-    }
+  set name(Name) {
+    this._name = Name;
   }
 
   displayFullCurrency() {
