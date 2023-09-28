@@ -1,3 +1,4 @@
+/* eslint no-underscore-dangle: ["error", {"allow": ["_name", "_length", "_students"] }] */
 export default class HolbertonCourse {
   constructor(name, length, students) {
     this._name = name;
