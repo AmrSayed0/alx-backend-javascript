@@ -6,4 +6,4 @@ console.log(p);
 console.log(p.displayFullPrice());
 
 const convertedPrice = Pricing.convertPrice(100, 1.2);
-console.log(convertedPrice); // Output: 120
+console.log(convertedPrice);
