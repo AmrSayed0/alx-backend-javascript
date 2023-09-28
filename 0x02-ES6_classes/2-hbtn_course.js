@@ -1,31 +1,33 @@
+/* eslint no-underscore-dangle: ["error", {"allow": ["_name", "_length", "_students"] }] */
 export default class HolbertonCourse {
   constructor(name, length, students) {
     this._name = name;
     this._length = length;
-    this._students = Array.isArray(students) ? students : [];
+    this._students = students;
   }
 
   get name() {
     return this._name;
   }
 
-  set name(newName) {
-    if (typeof newName === "string") {
-      this._name = newName;
+  set name(Name) {
+    if (typeof Name === 'string') {
+      this._name = Name;
     } else {
-      throw new Error("Invalid data type. Name must be a string.");
+      throw new TypeError('Name must be a string');
     }
+    this._name = Name;
   }
 
   get length() {
     return this._length;
   }
 
-  set length(newLength) {
-    if (typeof newLength === "number") {
-      this._length = newLength;
+  set length(Length) {
+    if (typeof Length === 'number') {
+      this._length = Length;
     } else {
-      throw new Error("Invalid data type. Length must be a number.");
+      throw new TypeError('Length must be a number');
     }
   }
 
@@ -33,11 +35,16 @@ export default class HolbertonCourse {
     return this._students;
   }
 
-  set students(newStudents) {
-    if (Array.isArray(newStudents)) {
-      this._students = newStudents;
+  set students(Students) {
+    if (typeof Students === 'object') {
+      for (const student in Students) {
+        if (typeof student !== 'string') {
+          throw new TypeError('Student must be an array');
+        }
+      }
     } else {
-      throw new Error("Invalid data type. Students must be an array.");
+      throw new TypeError('Student must be an array of strings');
     }
+    this._students = Students;
   }
 }
